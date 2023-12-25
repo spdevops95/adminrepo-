@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the source code from the version control system (e.g., Git)
+                git 'https://github.com/yourusername/yourrepository.git'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Build your project (replace 'make' with the actual build command)
+                sh 'make'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Run tests (replace 'make test' with the actual test command)
+                sh 'make test'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // Deploy the application (replace 'make deploy' with the actual deploy command)
+                sh 'make deploy'
+            }
+        }
+    }
+    
+    post {
+        success {
+            // Actions to perform when the pipeline succeeds
+            echo 'Pipeline succeeded! Send notifications, etc.'
+        }
+        
+        failure {
+            // Actions to perform when the pipeline fails
+            echo 'Pipeline failed! Send notifications, etc.'
+      
+
