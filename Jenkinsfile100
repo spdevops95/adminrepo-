@@ -4,19 +4,19 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo ' this is my all command for a code'
+                echo 'this is new code for the all commit'
                 // Add your build commands here
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing is also done'
+                echo 'Testing is done'
                 // Add your test commands here
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
+                echo 'Deploying my job'
                 // Add your deployment commands here
             }
         }
@@ -24,11 +24,11 @@ pipeline {
     
     post {
         success {
-            echo 'Build successful!'
+            echo 'Pipeline successful!'
             // Add post-build actions for success
         }
         failure {
-            echo 'Build failed!'
+            echo 'Pipeline failed!'
             // Add post-build actions for failure
         }
     }
