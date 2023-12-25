@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                echo ' this is my all command for a code'
+                // Add your build commands here
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing is also done'
+                // Add your test commands here
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                // Add your deployment commands here
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Build successful!'
+            // Add post-build actions for success
+        }
+        failure {
+            echo 'Build failed!'
+            // Add post-build actions for failure
+        }
+    }
+}
+
