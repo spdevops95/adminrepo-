@@ -1,0 +1,40 @@
+pipeline:
+  agent:
+    label: 'your-build-agent-label'
+
+  environment:
+    PATH: "/usr/local/bin:$PATH"
+
+  stages:
+    - stage: Checkout
+      steps:
+        - checkout scm
+
+    - stage: Build
+      steps:
+        - script:
+            command: 'mvn clean package'
+
+    - stage: Test
+      steps:
+        - script:
+            command: 'mvn test'
+
+    - stage: Deploy
+      steps:
+        - script:
+            command: 'echo "Deploying your application"'
+
+    - stage: DeployToProduction
+      when:
+        expression: branch == 'master'
+      steps:
+        - script:
+            command: 'echo "Deploying to production"'
+
+    - stage: Cleanup
+      post:
+        always:
+          - script:
+              command: 'echo "Cleaning up"'
+
